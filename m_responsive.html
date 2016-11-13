@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<meta name="format-detection" content="telephone=no" />
+	<title>mobile rem responsive</title>
+	<link rel="stylesheet" href="m_responsive.css">
+</head>
+<body>
+	<div id="main">
+		<div id="container" class="clearfix">
+			<div id="div1"></div>
+			<div id="div2"></div>
+			<div id="div3"></div>
+			<div id="div4"></div>
+
+		</div>
+		
+	</div>
+</body>
+</html>
+<script>
+	//检测浏览器更改html的font-size
+	(function(doc,win){
+		var docE1 = doc.documentElement,
+			resizeEvt = 'orientationchange' in window? 'orientationchange':'resize';
+			recalc = function(){
+				var clientWidth = docE1.clientWidth,
+					clientHeight = docE1.clientHeight;
+				if(!clientWidth) return;
+				docE1.style.fontSize = 20 * (clientWidth / 375) + 'px';
+				if(clientHeight){
+					document.getElementById("main").style.lineHeight = clientHeight + 'px';
+				}
+			};
+		if(!doc.addEventListener) return;
+		win.addEventListener(resizeEvt,recalc,false);
+		doc.addEventListener('DOMContentLoaded',recalc,false);
+
+	})(document,window);
+</script>
